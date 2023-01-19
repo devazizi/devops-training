@@ -1,0 +1,23 @@
+version: '3'
+
+networks:
+  nginx-global:
+    external:
+      name: nginx-global
+
+services:
+  nginx_web_server:
+    image: nginx:stable-alpine
+    container_name: nginx-global
+    restart: always
+    networks:
+      - nginx-global
+    volumes:
+      - ./nginx-logs:/var/log/nginx
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8000:8000"
+      - "8080:8080"

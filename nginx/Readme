@@ -1,0 +1,5 @@
+create global network for nginx each http request proxied by nginx 
+
+``
+docker network create nginx-global 
+``
