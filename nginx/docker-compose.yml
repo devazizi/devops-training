@@ -13,6 +13,7 @@ services:
     networks:
       - nginx-global
     volumes:
+      - ./apps:/etc/nginx/conf.d
       - ./nginx-logs:/var/log/nginx
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro

@@ -3,6 +3,10 @@ version: "3"
 networks:
   gitea:
     external: false
+  nginx-global:
+    external:
+      name: nginx-global
+
 
 services:
   server:
@@ -19,6 +23,7 @@ services:
     restart: always
     networks:
       - gitea
+      - nginx-global
     volumes:
       - ./gitea:/data
       - /etc/timezone:/etc/timezone:ro
