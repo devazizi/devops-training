@@ -1,0 +1,24 @@
+version: '3'
+
+networks:
+  nginx-global:
+    external:
+      name: nginx-global
+
+services:
+  drone:
+    image: drone/drone:2
+    container_name: drone-ci
+    restart: always
+    ports:
+     - "803:80"
+     #- "443:443"
+    environment:
+     - DRONE_GITEA_SERVER=http://gitea.localhost.dev
+     - DRONE_GITEA_CLIENT_ID=c3b50103-4453-47ed-b39a-a8683b1e9f53
+     - DRONE_GITEA_CLIENT_SECRET=gto_zdshpuzcsnrt4arasxiluzxioamwsc246pi4sm7zqjdbis5wnt5a
+     - DRONE_RPC_SECRET=super-duper-secret
+     - DRONE_SERVER_HOST=drone.localhost.dev
+     - DRONE_SERVER_PROTO=http
+    networks:
+     - nginx-global
